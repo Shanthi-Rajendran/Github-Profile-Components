@@ -13,11 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Github-Profile-Components</name>
 	<description>Github Profile IO Components</description>
-
-	<properties>
-		<java.version>11</java.version>
-	</properties>
-
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
