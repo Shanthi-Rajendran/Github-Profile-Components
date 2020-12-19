@@ -1,4 +1,8 @@
 package com.github.component.GithubProfileComponents.Controller;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -6,9 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/github/introduction")
 public class GitIntroController {
-    @GetMapping(value = "/public", produces="image/svg+xml")
-    public String getStatistics() {
-        return "<svg width=\"700px\" height=\"150px\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n" +
+    @GetMapping(value = "/public", produces = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<String> getStatistics() {
+        String template = "<svg width=\"700px\" height=\"150px\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n" +
                 "   <foreignObject width=\"100%\" height=\"100%\">\n" +
                 "     <div xmlns=\"http://www.w3.org/1999/xhtml\">\n" +
                 "         <style>\n" +
@@ -27,12 +31,15 @@ public class GitIntroController {
                 "         <div class=\"card\">\n" +
                 "             <div class=\"container\">\n" +
                 "                 <h4><b>John Doe</b></h4>\n" +
-                "                 <p>Architect & Engineer</p>\n" +
+                "                 <p>Architect Engineer</p>\n" +
                 "             </div>\n" +
                 "         </div>\n" +
                 "     </div>\n" +
                 "   </foreignObject>\n" +
                 "</svg>\n" +
                 "\n";
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.valueOf("image/svg+xml"));
+        return new ResponseEntity<String>(template, headers, HttpStatus.OK);
     }
 }
