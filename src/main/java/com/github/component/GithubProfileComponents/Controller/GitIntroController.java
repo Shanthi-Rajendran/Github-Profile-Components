@@ -39,7 +39,7 @@ public class GitIntroController {
                 "</svg>\n" +
                 "\n";
         HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.valueOf("image/svg+xml"));
+        headers.add("Content-Type", "image/svg+xml; charset=utf-8");
         return new ResponseEntity<String>(template, headers, HttpStatus.OK);
     }
 }
