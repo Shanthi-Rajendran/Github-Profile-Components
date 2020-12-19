@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/github/introduction")
 public class GitIntroController {
-    @GetMapping("/public")
+    @GetMapping(value = "/public", produces="image/svg+xml")
     public String getStatistics() {
         return "<svg width=\"700px\" height=\"150px\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n" +
                 "   <foreignObject width=\"100%\" height=\"100%\">\n" +
